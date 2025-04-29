@@ -9,7 +9,7 @@ const PatientCard = ({ patient }) => {
   if (!patient) {
     return (
       <div className="bg-white shadow rounded-lg p-6 max-w-4xl mx-auto text-center">
-        <p className="text-gray-500">Selecione um paciente para ver seus detalhes</p>
+        <p className="text-gray-500">Seleccione un paciente para ver sus detalles</p>
       </div>
     );
   }
@@ -34,8 +34,8 @@ const PatientCard = ({ patient }) => {
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-800">{patient.name}</h2>
         <div className="flex gap-4 text-sm text-gray-600 mt-2">
-          <p>Idade: {patient.age}</p>
-          <p>Email: {patient.email}</p>
+          <p>Edad: {patient.age}</p>
+          <p>Correo electrónico: {patient.email}</p>
           <p>ID: {patient.id}</p>
         </div>
       </div>
@@ -50,7 +50,7 @@ const PatientCard = ({ patient }) => {
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
-            Resumo de Sensores
+            Resumen de Sensores
           </button>
           <button
             onClick={() => setActiveTab('charts')}

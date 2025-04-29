@@ -14,13 +14,13 @@ const ListPatient = ({ onSelectPatient }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Erro ao buscar pacientes');
+        throw new Error('Error al buscar pacientes');
       }
 
       const data = await response.json();
       setPatients(data || []); // Pegando a propriedade users do objeto de resposta
     } catch (error) {
-      console.error('Erro ao buscar pacientes:', error);
+      console.error('Error al buscar pacientes:', error);
     }
   };
 

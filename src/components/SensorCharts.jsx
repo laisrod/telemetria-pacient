@@ -22,8 +22,8 @@ ChartJS.register(
 );
 
 const SensorCharts = ({ historyData }) => {
-  const [data, setData] = useState(null);
-  const [status, setStatus] = useState({ stopped: false, running: false, creating: false, stopping: false });
+  const [setData] = useState(null);
+  const [setStatus] = useState({ stopped: false, running: false, creating: false, stopping: false });
 
   const fetchServerData = async () => {
     try {
@@ -40,60 +40,55 @@ const SensorCharts = ({ historyData }) => {
     }
   };
 
-  const pollingFunc = async () => {
-    try {
-      console.log("Iniciando polling");
-      //fetch server data
-      const data = await fetchServerData();
-     
-      console.log("Status recebido:", data?.status);
-      
-      switch (data?.status) {
-        case "stopped":
-          setStatus({ stopped: true });
-          break;
-    
-        case "running":
-          if (data?.url) {
-            setData(data);
-            setStatus({ running: true });
-          }
-          break;
-    
-        case "creating":
-          setStatus({ creating: true });
-          console.log("Server is creating");
-          break;
-    
-        case "stopping":
-          setStatus({ stopping: true });
-          console.log("Server is stopping");
-          break;
-    
-        default:
-          break;
-      }
-    } catch (error) {
-      console.error("Erro no polling:", error);
-    }
-  };
-
   const pollingRef = useRef(null);
+
   useEffect(() => {
+    const pollingFunc = async () => {
+      try {
+        console.log("Iniciando polling");
+        const data = await fetchServerData();
+        console.log("Status recebido:", data?.status);
+        
+        switch (data?.status) {
+          case "stopped":
+            setStatus({ stopped: true });
+            break;
+          case "running":
+            if (data?.url) {
+              setData(data);
+              setStatus({ running: true });
+            }
+            break;
+          case "creating":
+            setStatus({ creating: true });
+            console.log("El servidor está creando");
+            break;
+          case "stopping":
+            setStatus({ stopping: true });
+            console.log("El servidor está deteniendo");
+            break;
+          default:
+            break;
+        }
+      } catch (error) {
+        console.error("Error en el polling:", error);
+      }
+    };
+        
     const startPolling = () => {
       pollingRef.current = setInterval(() => {
         pollingFunc();
       }, 5000); // Poll every 5 seconds
     };
     startPolling();
-
+  
     return () => {
       clearInterval(pollingRef.current);
     };
-  }, []);
+  }, [setData, setStatus]); // Include setData and setStatus as dependencies
 
   const heartRateData = {
-    labels: ['6h atrás', '5h atrás', '4h atrás', '3h atrás', '2h atrás', '1h atrás'],
+    labels: ['hace 6h', 'hace 5h', 'hace 4h', 'hace 3h', 'hace 2h', 'hace 1h'],
     datasets: [
       {
         label: 'Frequência Cardíaca (bpm)',
@@ -107,7 +102,7 @@ const SensorCharts = ({ historyData }) => {
   };
 
   const temperatureData = {
-    labels: ['5h atrás', '4h atrás', '3h atrás', '2h atrás', '1h atrás'],
+    labels: ['hace 5h', 'hace 4h', 'hace 3h', 'hace 2h', 'hace 1h'],
     datasets: [
       {
         label: 'Temperatura (°C)',
@@ -121,7 +116,7 @@ const SensorCharts = ({ historyData }) => {
   };
 
   const oxygenData = {
-    labels: ['6h atrás', '5h atrás', '4h atrás', '3h atrás', '2h atrás', '1h atrás'],
+    labels: ['hace 6h', 'hace 5h', 'hace 4h', 'hace 3h', 'hace 2h', 'hace 1h'],
     datasets: [
       {
         label: 'Nível de Oxigênio (%)',
@@ -151,7 +146,7 @@ const SensorCharts = ({ historyData }) => {
   return (
     <div className="space-y-8">
       <div className="bg-white p-4 rounded-lg shadow">
-        <h3 className="text-lg font-medium text-gray-800 mb-3">Frequência Cardíaca</h3>
+        <h3 className="text-lg font-medium text-gray-800 mb-3">Frecuencia cardíaca</h3>
         <div className="h-64">
           <Line data={heartRateData} options={chartOptions} />
         </div>
@@ -165,7 +160,7 @@ const SensorCharts = ({ historyData }) => {
       </div>
 
       <div className="bg-white p-4 rounded-lg shadow">
-        <h3 className="text-lg font-medium text-gray-800 mb-3">Nível de Oxigênio</h3>
+        <h3 className="text-lg font-medium text-gray-800 mb-3">Nivel de oxígeno</h3>
         <div className="h-64">
           <Line data={oxygenData} options={chartOptions} />
         </div>

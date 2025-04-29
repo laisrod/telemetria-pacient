@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import {useState } from 'react';
 import './App.css';
-import HeadPage from './components/HeadPage';
 import ListPatient from './components/ListPatient';
 import PatientCard from './components/PatientCard';
 
@@ -19,7 +18,7 @@ function App() {
 
   return (
     <div>
-      <HeadPage />
+
       
       <div className="container mx-auto p-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -29,7 +28,7 @@ function App() {
           </div>
           
           <div>
-            <h2 className="text-xl font-bold mb-4">Detalhes do Paciente</h2>
+            <h2 className="text-xl font-bold mb-4">Detalles del paciente</h2>
             <PatientCard patient={selectedPatient} />
           </div>
         </div>
