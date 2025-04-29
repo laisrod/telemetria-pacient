@@ -1,4 +1,4 @@
-import {useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import ListPatient from './components/ListPatient';
 import PatientCard from './components/PatientCard';
@@ -29,7 +29,7 @@ function App() {
           
           <div>
             <h2 className="text-xl font-bold mb-4">Detalles del paciente</h2>
-            <PatientCard patient={selectedPatient} />
+            <PatientCard patient={handlePatientId} />
           </div>
         </div>
       </div>

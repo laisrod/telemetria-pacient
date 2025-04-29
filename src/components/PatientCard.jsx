@@ -4,15 +4,10 @@ import SensorCharts from './SensorCharts';
 
 const PatientCard = ({ patient }) => {
   const [activeTab, setActiveTab] = useState('summary');
+  console.log(patient);
 
   // Se não houver patientId, mostra uma mensagem
-  if (!patient) {
-    return (
-      <div className="bg-white shadow rounded-lg p-6 max-w-4xl mx-auto text-center">
-        <p className="text-gray-500">Seleccione un paciente para ver sus detalles</p>
-      </div>
-    );
-  }
+ 
   const sensorData = {
     heartRate: Math.floor(60 + Math.random() * 40), // 60-100 bpm
     bloodPressure: `${Math.floor(110 + Math.random() * 30)}/${Math.floor(70 + Math.random() * 20)}`, // 110-140/70-90
