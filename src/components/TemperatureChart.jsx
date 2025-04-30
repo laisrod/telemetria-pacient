@@ -2,7 +2,6 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 
 const TemperatureChart = ({ temperatureData, chartOptions }) => {
-
   const temperatureChartData = {
     labels: ['hace 5h', 'hace 4h', 'hace 3h', 'hace 2h', 'hace 1h'],
     datasets: [
@@ -18,7 +17,6 @@ const TemperatureChart = ({ temperatureData, chartOptions }) => {
   };
 
   return <div>
-
     <div className="bg-white p-4 rounded-lg shadow">
         <h3 className="text-lg font-medium text-gray-800 mb-3">Temperatura</h3>
         <div className="h-64">

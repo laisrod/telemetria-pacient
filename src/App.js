@@ -4,12 +4,13 @@ import ListPatient from './components/ListPatient';
 import PatientCard from './components/PatientCard';
 
 function App() {
-  const [selectedPatient, setSelectedPatient] = useState(null);
+  const [selectedPatient, setSelectedPatient] = useState('');
   async function handlePatientId(patientId) {
     fetch(`https://dummyjson.com/c/54c7-e3a3-47b4-9068`)
     .then(response => response.json())
     .then(patients => {
       setSelectedPatient(patients.find(patient => patient.id === patientId));
+      console.log(patients);
     })
     .catch(error => {
       console.error('Erro ao buscar dados do paciente:', error);
@@ -29,7 +30,7 @@ function App() {
           
           <div>
             <h2 className="text-xl font-bold mb-4">Detalles del paciente</h2>
-            <PatientCard patient={handlePatientId} />
+            <PatientCard patient={selectedPatient} />
           </div>
         </div>
       </div>
