@@ -2,7 +2,6 @@ import { React, useEffect, useRef, useState } from 'react';
 import OxigenChart from './OxigenChart';
 import HeartRateChart from './HeartRateChart';
 import TemperatureChart from './TemperatureChart';
-import { Line } from 'react-chartjs-2';
 import { 
   Chart as ChartJS, 
   CategoryScale, 
@@ -35,7 +34,6 @@ const SensorCharts = ({ historyData }) => {
         throw new Error(`Error en la solicitud: ${response.status}`);
       }
       const data = await response.json();
-      console.log("Dados recebidos:", data);
       return data;
     } catch (error) {
       console.error('Error fetching data:', error);

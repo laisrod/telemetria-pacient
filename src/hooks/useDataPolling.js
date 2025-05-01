@@ -12,7 +12,6 @@ const useDataPolling = () => {
         throw new Error(`Error en la solicitud: ${response.status}`);
       }
       const data = await response.json();
-      console.log("Dados recebidos:", data);
       return data;
     } catch (error) {
       console.error('Error fetching data:', error);

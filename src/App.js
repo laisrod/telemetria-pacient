@@ -10,7 +10,6 @@ function App() {
     .then(response => response.json())
     .then(patients => {
       setSelectedPatient(patients.find(patient => patient.id === patientId));
-      console.log(patients);
     })
     .catch(error => {
       console.error('Erro ao buscar dados do paciente:', error);

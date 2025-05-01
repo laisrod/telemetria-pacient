@@ -4,8 +4,6 @@ import SensorCharts from './SensorCharts';
 
 const PatientCard = ({ patient }) => {
   const [activeTab, setActiveTab] = useState('summary');
-  console.log(patient);
-
   // Se não houver patientId, mostra uma mensagem
  
   const sensorData = {
