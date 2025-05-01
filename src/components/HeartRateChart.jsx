@@ -6,7 +6,7 @@ const HeartRateChart = ({ heartRateData, chartOptions }) => {
     labels: ['hace 6h', 'hace 5h', 'hace 4h', 'hace 3h', 'hace 2h', 'hace 1h'],
     datasets: [
       {
-        label: 'Frequência Cardíaca (bpm)',
+        label: 'Frecuencia Cardíaca (bpm)',
         data: heartRateData,
         fill: false,
         backgroundColor: 'rgb(75, 192, 192)',
@@ -18,7 +18,7 @@ const HeartRateChart = ({ heartRateData, chartOptions }) => {
     
   return <div>
     <div className="bg-white p-4 rounded-lg shadow">
-        <h3 className="text-lg font-medium text-gray-800 mb-3">Frecuencia cardíaca</h3>
+        <h3 className="text-lg font-medium text-gray-800 mb-3">Frecuencia Cardíaca</h3>
         <div className="h-64">
           <Line data={heartRateChartData} options={chartOptions} />
         </div>

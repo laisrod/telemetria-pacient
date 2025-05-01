@@ -18,7 +18,7 @@ const OxigenChart = ({ oxygenData, chartOptions }) => {
 
   return <div>
     <div className="bg-white p-4 rounded-lg shadow">
-        <h3 className="text-lg font-medium text-gray-800 mb-3">Nivel de oxígeno</h3>
+        <h3 className="text-lg font-medium text-gray-800 mb-3">Nivel de Oxígeno</h3>
         <div className="h-64">
           <Line data={oxygenChartData} options={chartOptions} />
         </div>

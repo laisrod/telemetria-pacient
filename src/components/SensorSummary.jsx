@@ -19,7 +19,7 @@ const SensorSummary = ({ sensorData }) => {
             <span className="font-semibold">{sensorData.temperature}°C</span>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-gray-600">Nível de Oxigênio:</span>
+            <span className="text-gray-600">Nivel de Oxígeno:</span>
             <span className="font-semibold">{sensorData.oxygenLevel}%</span>
           </div>
         </div>
